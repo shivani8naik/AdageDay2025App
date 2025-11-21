@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>{{ event.name }} — {{ event.tagline }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+  <meta name="theme-color" content="#008B94">
+  <link rel="icon" href="{{ url_for('static', filename='images/md_photo.png') }}">
+
+  <style>
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background-color: #FFF8F3;
+      margin: 0;
+      padding-bottom: calc(90px + env(safe-area-inset-bottom)); /* Mobile nav safe space */
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    h1, h2, h3, .nav-active {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    main {
+      animation: fadeIn 0.4s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Desktop Navigation */
+    nav a {
+      padding-bottom: 4px;
+      border-bottom: 2px solid transparent;
+      transition: all 0.3s ease;
+    }
+    nav a:hover {
+      color: #008B94;
+      border-bottom: 2px solid #008B94;
+    }
+
+    /* Active Navigation (Desktop + Mobile) */
+    .nav-active {
+      color: #C9A54A !important;
+      font-weight: 600;
+    }
+
+    .mobile-nav a.nav-active {
+      background-color: rgba(201, 165, 74, 0.15);
+      border-radius: 18px;
+      font-weight: 600;
+    }
+
+    .mobile-nav a.nav-active span.material-icons {
+      color: #C9A54A;
+    }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(200, 200, 200, 0.3);
+    }
+
+    /* Mobile Nav Styling */
+    .mobile-nav {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 -4px 14px rgba(0, 0, 0, 0.1);
+      border-radius: 28px;
+    }
+
+    .mobile-nav a {
+      flex: 1;
+      text-align: center;
+      padding: 6px 0;
+      font-size: 11px;
+    }
+
+    .mobile-nav .material-icons {
+      font-size: 22px;
+      margin-bottom: 2px;
+    }
+
+    /* Smooth scrolling for section links */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Footer Styling */
+    footer {
+      background-color: transparent;
+      color: #888;
+      font-size: 11px;
+      border-top: 1px solid rgba(0,0,0,0.05);
+      padding: 14px 0;
+    }
+  </style>
+</head>
+
+<body class="text-gray-800 flex flex-col min-h-screen">
+
+  <!-- Desktop Header -->
+  <header class="hidden md:block shadow-sm">
+    <div class="max-w-6xl mx-auto py-4 px-6 flex justify-between items-center">
+      <span class="text-xl font-extrabold tracking-widest text-[#008B94] uppercase cursor-pointer">
+        {{ event.name }}
+      </span>
+
+      <nav class="flex gap-6 text-sm font-medium">
+        <a href="{{ url_for('home') }}" class="{% if active_page=='home' %}nav-active{% endif %}">Home</a>
+        <a href="{{ url_for('message') }}" class="{% if active_page=='message' %}nav-active{% endif %}">Message</a>
+        <a href="{{ url_for('schedule_page') }}" class="{% if active_page=='schedule' %}nav-active{% endif %}">Schedule</a>
+        <a href="{{ url_for('gallery_page') }}" class="{% if active_page=='gallery' %}nav-active{% endif %}">Gallery</a>
+        <a href="{{ url_for('rules_page') }}" class="{% if active_page=='rules' %}nav-active{% endif %}">Guidelines</a>
+        <a href="{{ url_for('contacts_page') }}" class="{% if active_page=='contacts' %}nav-active{% endif %}">Contacts</a>
+        <a href="{{ url_for('guest_page') }}" class="{% if active_page=='guest' %}nav-active{% endif %}">Guest</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Page Content -->
+  <main class="flex-1">
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- Bottom Navigation (Mobile) -->
+  <nav
+    class="mobile-nav fixed bottom-3 left-1/2 -translate-x-1/2 w-[92%] px-4 py-2 rounded-full flex justify-around md:hidden z-50">
+
+    <a href="{{ url_for('home') }}" class="{% if active_page=='home' %}nav-active{% endif %}">
+      <span class="material-icons">home</span>
+      <div>Home</div>
+    </a>
+
+    <a href="{{ url_for('schedule_page') }}" class="{% if active_page=='schedule' %}nav-active{% endif %}">
+      <span class="material-icons">event</span>
+      <div>Schedule</div>
+    </a>
+
+    <a href="{{ url_for('rules_page') }}" class="{% if active_page=='rules' %}nav-active{% endif %}">
+      <span class="material-icons">rule</span>
+      <div>Guidelines</div>
+    </a>
+
+    <a href="{{ url_for('contacts_page') }}" class="{% if active_page=='contacts' %}nav-active{% endif %}">
+      <span class="material-icons">call</span>
+      <div>Contacts</div>
+    </a>
+
+    <a href="{{ url_for('guest_page') }}" class="{% if active_page=='guest' %}nav-active{% endif %}">
+      <span class="material-icons">flight_takeoff</span>
+      <div>Guest</div>
+    </a>
+  </nav>
+
+  <!-- Footer -->
+  <footer class="text-center py-5 text-xs mt-12">
+    © {{ event.year }} Adage Automation Pvt. Ltd — Adage • Theme
+  </footer>
+
+</body>
+</html>

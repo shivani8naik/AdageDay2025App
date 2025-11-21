@@ -1,0 +1,163 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="max-w-md mx-auto px-4 py-6">
+
+  <!-- Title -->
+  <div class="text-center mb-6">
+    <h2 class="text-2xl font-bold text-[#008B94]">Event Schedule</h2>
+    <p class="text-xs text-gray-500 tracking-wide">29 & 30 November 2025</p>
+  </div>
+
+  <!-- Tabs -->
+  <div class="flex justify-center mb-6 bg-white rounded-full shadow-md p-1">
+    <button onclick="showDay(1)" id="tab1"
+      class="flex-1 py-2 rounded-full text-sm font-medium bg-[#008B94] text-white transition">
+      Day 1
+    </button>
+    <button onclick="showDay(2)" id="tab2"
+      class="flex-1 py-2 rounded-full text-sm font-medium bg-gray-100 text-gray-700 transition">
+      Day 2
+    </button>
+  </div>
+
+  <!-- DAY 1 -->
+  <div id="day1" class="day-tab">
+
+    <!-- Sports Header -->
+    <div class="text-center mb-4 scroll-mt-24 p-4 rounded-xl bg-[#E8F6F7] border border-[#008B94]/40 shadow-sm" id="day1-sports">
+      <h3 class="text-lg font-semibold text-[#008B94] flex items-center justify-center gap-2">
+        ⚽ Sports Day
+      </h3>
+      <p class="text-xs text-gray-600">29 November 2025 • Morning</p>
+      <p class="text-xs mt-1"><strong>Venue:</strong> Don Bosco College Ground</p>
+      <p class="text-xs"><strong>Dress Code:</strong> Team Jersey, Track Pants & Sports Shoes</p>
+    </div>
+
+    {% for time, title in [
+      ('05:00 AM', 'Reporting'),
+      ('06:00 AM', 'Running Event I'),
+      ('07:30 AM', 'Running Event II / Breakfast'),
+      ('08:00 AM Onwards', 'Football & Futsal'),
+      ('11:30 AM', 'Lunch')
+    ] %}
+    <div class="bg-white rounded-xl shadow-sm p-4 mb-4 border-l-4 border-[#008B94]">
+      <p class="text-xs font-bold text-[#008B94]">{{ time }}</p>
+      <h3 class="font-medium text-sm">{{ title }}</h3>
+    </div>
+    {% endfor %}
+
+    <!-- Awards Night Header -->
+    <div class="text-center mt-8 mb-4 scroll-mt-24 p-4 rounded-xl bg-[#FFF8E7] border border-[#C9A54A]/40 shadow-sm" id="day1-awards">
+      <h3 class="text-lg font-semibold text-[#C9A54A] flex items-center justify-center gap-2">
+        🏆 Awards Night
+      </h3>
+      <p class="text-xs text-gray-600">29 November 2025 • Evening</p>
+      <p class="text-xs mt-1"><strong>Venue:</strong> Metropole Margao</p>
+      <p class="text-xs"><strong>Dress Code:</strong> Urban Western Wear</p>
+    </div>
+
+    {% for time, title in [
+      ('04:30 PM', 'Reporting & Hi-Tea'),
+      ('05:15 PM', 'GTM'),
+      ('06:15 PM', 'Bio Break'),
+      ('06:30 PM', 'Treasure Hunt'),
+      ('07:30 PM', 'Drinks Break'),
+      ('07:45 PM', 'Lamp Lighting'),
+      ('08:00 PM', 'Awards'),
+      ('09:15 PM', 'Entertainment'),
+      ('10:15 PM', 'Dinner')
+    ] %}
+    <div class="bg-white rounded-xl shadow-sm p-4 mb-4 border-l-4 border-[#C9A54A]">
+      <p class="text-xs font-bold text-[#C9A54A]">{{ time }}</p>
+      <h3 class="font-medium text-sm">{{ title }}</h3>
+    </div>
+    {% endfor %}
+  </div>
+
+  <!-- DAY 2 -->
+  <div id="day2" class="day-tab hidden">
+
+    <!-- Photoshoot Header -->
+    <div class="text-center mb-4 scroll-mt-24 p-4 rounded-xl bg-[#E8F6F7] border border-[#008B94]/40 shadow-sm" id="day2-photoshoot">
+      <h3 class="text-lg font-semibold text-[#008B94] flex items-center justify-center gap-2">
+        📸 Photoshoot
+      </h3>
+      <p class="text-xs text-gray-600">30 November 2025 • Morning</p>
+      <p class="text-xs mt-1"><strong>Reporting Time:</strong> 06:30 AM Sharp</p>
+      <p class="text-xs"><strong>Venue:</strong> Near Adage Phase 3</p>
+      <p class="text-xs"><strong>Dress Code:</strong> Company T-Shirt, Blue Denims & Sports Shoes</p>
+    </div>
+
+    <div class="bg-white rounded-xl shadow-sm p-4 mb-4 border-l-4 border-[#008B94]">
+      <p class="text-xs font-bold text-[#008B94]">06:30 AM</p>
+      <h3 class="font-medium text-sm">Team & Department Photoshoot</h3>
+      <p class="text-xs text-gray-600 mt-1">Breakfast will be provided at Adage Unit 1 after Photoshoot.</p>
+    </div>
+
+    <!-- Gala Night Header -->
+    <div class="text-center mt-8 mb-4 scroll-mt-24 p-4 rounded-xl bg-[#FFF8E7] border border-[#C9A54A]/40 shadow-sm" id="day2-gala">
+      <h3 class="text-lg font-semibold text-[#C9A54A] flex items-center justify-center gap-2">
+        🎉 Gala Night
+      </h3>
+      <p class="text-xs text-gray-600">30 November 2025 • Evening</p>
+      <p class="text-xs mt-1"><strong>Venue:</strong> Adage Unit 2 Factory</p>
+      <p class="text-xs"><strong>Dress Code:</strong> Western Party Wear</p>
+    </div>
+
+    {% for time, title in [
+      ('05:00 PM', 'Reporting'),
+      ('05:30 PM', 'Grand Opening'),
+      ('06:00 PM', 'Welcome & Cake Cutting'),
+      ('06:45 PM', 'High Tea'),
+      ('07:15 PM', 'Entertainment Part 1'),
+      ('08:15 PM', 'Bio Break'),
+      ('08:45 PM', 'Entertainment Part 2'),
+      ('10:00 PM', 'Bio Break'),
+      ('10:15 PM', 'SOA'),
+      ('10:45 PM Onwards', 'Dinner & Party Begins')
+    ] %}
+    <div class="bg-white rounded-xl shadow-sm p-4 mb-4 border-l-4 border-[#C9A54A]">
+      <p class="text-xs font-bold text-[#C9A54A]">{{ time }}</p>
+      <h3 class="font-medium text-sm">{{ title }}</h3>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<script>
+  function showDay(day) {
+    document.getElementById('day1').classList.toggle('hidden', day !== 1);
+    document.getElementById('day2').classList.toggle('hidden', day !== 2);
+
+    tabStyle('tab1', day === 1);
+    tabStyle('tab2', day === 2);
+  }
+
+  function tabStyle(id, active) {
+    const tab = document.getElementById(id);
+    tab.classList.toggle('bg-[#008B94]', active);
+    tab.classList.toggle('text-white', active);
+    tab.classList.toggle('bg-gray-100', !active);
+    tab.classList.toggle('text-gray-700', !active);
+  }
+
+  // 🔹 Auto-select tab based on ?day=2
+  window.onload = function () {
+    const params = new URLSearchParams(window.location.search);
+    const day = parseInt(params.get("day")) || 1;
+    showDay(day);
+
+    // 🔻 Optional: Smooth scroll to section inside Day 2
+    if (day === 2) {
+      setTimeout(() => {
+        const target = params.get("section");
+        if (target && document.getElementById(target)) {
+          document.getElementById(target).scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 500);
+    }
+  };
+
+
+</script>
+{% endblock %}

@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="max-w-3xl mx-auto px-5 py-8 animate-fadeIn">
+
+  <!-- Page Header -->
+  <div class="text-center mb-8">
+    <h1 class="text-2xl font-bold text-[#008B94] flex items-center justify-center gap-2">
+      <span class="material-icons text-[#008B94]">flight_takeoff</span>
+      Guest Information
+    </h1>
+    <p class="text-xs text-gray-500">Travel • Pickup • Accommodation • Assistance</p>
+  </div>
+
+  <div class="space-y-8">
+
+    <!-- Pickup & Drop Card -->
+    <div class="bg-white rounded-xl p-5 shadow-md border border-gray-100">
+      <h3 class="font-semibold text-[#008B94] flex items-center gap-2 mb-3 text-sm">
+        🚐 Pickup & Drop Schedule
+      </h3>
+
+      <div class="overflow-x-auto rounded-lg shadow border border-gray-200">
+        <table class="w-full text-[12px] border-collapse text-center">
+          <thead class="bg-[#008B94] text-white">
+            <tr>
+              <th class="p-2 border">Date</th>
+              <th class="p-2 border">Time</th>
+              <th class="p-2 border">Pickup Location</th>
+              <th class="p-2 border">Drop Location</th>
+            </tr>
+          </thead>
+          
+          <tbody>
+            {% for r in pickups %}
+            <tr class="hover:bg-gray-50">
+              <td class="border p-2">{{ r.date }}</td>
+              <td class="border p-2 font-semibold">{{ r.time }}</td>
+              <td class="border p-2">{{ r.pickup }}</td>
+              <td class="border p-2">{{ r.drop }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <p class="text-[11px] text-gray-500 mt-2">⏰ Please be ready 15 minutes before reporting time.</p>
+    </div>
+
+    <!-- Accommodation Card -->
+    <div class="bg-gradient-to-r from-[#008B94]/10 to-[#C9A54A]/10 border-l-4 border-[#008B94] rounded-xl p-5 shadow-sm">
+      <h3 class="font-semibold text-[#008B94] mb-2 flex items-center gap-2 text-sm">🏨 Accommodation</h3>
+      <p class="text-sm text-gray-700 leading-relaxed">
+        <strong>Hotel:</strong> Taj Palace, Goa<br>
+        <strong>Check-In:</strong> 28 Nov, 12 PM<br>
+        <strong>Check-Out:</strong> 1 Dec, 11 AM<br>
+      </p>
+    </div>
+
+    <!-- Room Allocation -->
+    <div class="bg-white rounded-xl p-5 shadow-md border border-gray-100">
+      <h3 class="font-semibold text-[#C9A54A] flex items-center gap-2 mb-2 text-sm">
+        🛏 Room Allocation
+      </h3>
+      <p class="text-sm text-gray-600">
+        Rooms are allocated based on department & region.<br>
+        Final list will be uploaded soon.
+      </p>
+    </div>
+
+    <!-- Region-Wise Contacts -->
+    <div class="bg-white rounded-xl p-5 shadow-md border border-gray-100">
+      <h3 class="font-semibold text-blue-600 flex items-center gap-2 mb-3 text-sm">
+        🌍 Region-wise Contacts
+      </h3>
+      <div class="space-y-2 text-sm text-gray-600">
+        <p>• Mumbai, Delhi, Pune — Rahul Sharma</p>
+        <p>• Goa, Bengaluru — Priya Mehta</p>
+        <p>• Ahmedabad, Chennai — Sanjay Patel</p>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- Soft Fade-In Animation -->
+<style>
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fadeIn { animation: fadeIn .6s ease-in-out; }
+</style>
+
+{% endblock %}

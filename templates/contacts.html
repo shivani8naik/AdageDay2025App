@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="max-w-md mx-auto px-4 py-6 animate-fadeIn">
+
+  <!-- Header -->
+  <div class="text-center mb-6">
+    <h2 class="text-xl font-bold text-[#008B94]">Event Contact Directory</h2>
+    <p class="text-xs text-gray-500">Call • WhatsApp • Support • Travel • Accommodation</p>
+  </div>
+
+  <!-- Contact Cards -->
+  <div class="space-y-5">
+
+    <!-- Travel & Stay -->
+    <div class="bg-white rounded-2xl shadow-md p-5 hover:shadow-xl transition border border-gray-100">
+      <div class="flex items-center gap-2 mb-4">
+        <span class="material-icons text-[#008B94]">commute</span>
+        <h3 class="text-lg font-bold">Travel</h3>
+      </div>
+
+      {% for person in [
+        {"name": "Devyani S", "phone": "9403824212"},
+        {"name": "Prachi Angle", "phone": "9921448896"},
+        {"name": "Stalin V", "phone": "8308169620"}
+      ] %}
+      <div class="flex items-center justify-between py-3 border-b last:border-0">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 flex items-center justify-center rounded-full bg-[#E0F3F3] text-[#008B94] font-bold">
+            {{ person.name[0] }}
+          </div>
+          <div>
+            <p class="font-semibold text-sm">{{ person.name }}</p>
+          </div>
+        </div>
+        <div class="flex gap-3">
+          <a href="tel:{{ person.phone }}" class="text-[#008B94] text-lg">📞</a>
+          <a href="https://wa.me/{{ person.phone }}" target="_blank" class="text-green-500 text-lg">💬</a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- Local Transportation -->
+    <div class="bg-white rounded-2xl shadow-md p-5 hover:shadow-xl transition border border-gray-100">
+      <div class="flex items-center gap-2 mb-4">
+        <span class="material-icons text-[#008B94]">local_taxi</span>
+        <h3 class="text-lg font-bold">Local Transportation</h3>
+      </div>
+
+      {% for person in [
+        {"name": "Ramesh Bhogle", "phone": "9004765393"},
+        {"name": "Sagar S", "phone": "9960073748"}
+      ] %}
+      <div class="flex items-center justify-between py-3 border-b last:border-0">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 flex items-center justify-center rounded-full bg-[#E0F3F3] text-[#008B94] font-bold">
+            {{ person.name[0] }}
+          </div>
+          <div>
+            <p class="font-semibold text-sm">{{ person.name }}</p>
+          </div>
+        </div>
+        <div class="flex gap-3">
+          <a href="tel:{{ person.phone }}" class="text-[#008B94] text-lg">📞</a>
+          <a href="https://wa.me/{{ person.phone }}" target="_blank" class="text-green-500 text-lg">💬</a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- Accommodation -->
+    <div class="bg-white rounded-2xl shadow-md p-5 hover:shadow-xl transition border border-gray-100">
+      <div class="flex items-center gap-2 mb-4">
+        <span class="material-icons text-[#008B94]">hotel</span>
+        <h3 class="text-lg font-bold">Accommodation</h3>
+      </div>
+
+      {% for person in [
+        {"name": "Alok Gupta", "phone": "7506039677"},
+        {"name": "Devyani S", "phone": "9403824212"}
+      ] %}
+      <div class="flex items-center justify-between py-3 border-b last:border-0">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 flex items-center justify-center rounded-full bg-[#E0F3F3] text-[#008B94] font-bold">
+            {{ person.name[0] }}
+          </div>
+          <div>
+            <p class="font-semibold text-sm">{{ person.name }}</p>
+          </div>
+        </div>
+        <div class="flex gap-3">
+          <a href="tel:{{ person.phone }}" class="text-[#008B94] text-lg">📞</a>
+          <a href="https://wa.me/{{ person.phone }}" target="_blank" class="text-green-500 text-lg">💬</a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- Any Other Assistance -->
+    <div class="bg-white rounded-2xl shadow-md p-5 hover:shadow-xl transition border border-gray-100">
+      <div class="flex items-center gap-2 mb-4">
+        <span class="material-icons text-[#008B94]">support_agent</span>
+        <h3 class="text-lg font-bold">Any Other Assistance</h3>
+      </div>
+
+      {% for person in [
+        {"name": "Stalin V", "phone": "8308169620"},
+        {"name": "Devyani", "phone": "9403824212"},
+        {"name": "Prachi Pai", "phone": "9921448896"},
+        {"name": "Ramesh Bhogle", "phone": "9004765393"}
+      ] %}
+      <div class="flex items-center justify-between py-3 border-b last:border-0">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 flex items-center justify-center rounded-full bg-[#E0F3F3] text-[#008B94] font-bold">
+            {{ person.name[0] }}
+          </div>
+          <div>
+            <p class="font-semibold text-sm">{{ person.name }}</p>
+          </div>
+        </div>
+        <div class="flex gap-3">
+          <a href="tel:{{ person.phone }}" class="text-[#008B94] text-lg">📞</a>
+          <a href="https://wa.me/{{ person.phone }}" target="_blank" class="text-green-500 text-lg">💬</a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+  </div>
+
+</section>
+
+<style>
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fadeIn { animation: fadeIn 0.6s ease; }
+</style>
+
+{% endblock %}

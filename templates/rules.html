@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="max-w-4xl mx-auto px-5 py-8 animate-fadeIn">
+
+  <!-- Page Header -->
+  <div class="text-center mb-8">
+    <h1 class="text-3xl font-extrabold text-[#008B94]">Event Guidelines</h1>
+    <p class="text-sm text-gray-500">Ensuring safety, discipline & smooth event experience</p>
+  </div>
+
+  <div class="grid md:grid-cols-2 gap-6">
+
+    <!-- DO'S -->
+    <div class="bg-gradient-to-br from-green-50 to-white border-l-8 border-green-600 rounded-xl p-6 shadow-sm">
+      <div class="flex items-center gap-2 mb-3">
+        <span class="material-icons text-green-600">check_circle</span>
+        <h2 class="text-xl font-bold text-green-700">DO's</h2>
+      </div>
+      <ul class="space-y-3 text-gray-700 text-sm leading-relaxed">
+        <li>✔ Do Report on Time.</li>
+        <li>✔ Do Come as per Dress Code mentioned for the Photo Shoot.</li>
+        <li>✔ Do Remember your standing position for the photoshoot.</li>
+        <li>✔ For the sports meet report in Correct Sports Attire (Sports Shoes, Team Jersey, Track Pants/Shorts).</li>
+        <li>✔ Carry your own water bottle.</li>
+        <li>✔ Do Warm Up and Stretching before the Sport Event begins.</li>
+        <li>✔ Do Stay in the Area where you are requested to be in during the Events.</li>
+        <li>✔ Parents do make sure your children are off the field during the Sport Events.</li>
+        <li>✔ Do Dress As per the Theme.</li>
+      </ul>
+    </div>
+
+    <!-- DON'TS -->
+    <div class="bg-gradient-to-br from-red-50 to-white border-l-8 border-red-600 rounded-xl p-6 shadow-sm">
+      <div class="flex items-center gap-2 mb-3">
+        <span class="material-icons text-red-600">block</span>
+        <h2 class="text-xl font-bold text-red-700">DON'Ts</h2>
+      </div>
+      <ul class="space-y-3 text-gray-700 text-sm leading-relaxed">
+        <li>🚫 Don’t litter the place with eatables and other things.</li>
+        <li>🚫 Parents do make sure your children don’t make noise and interrupt the ongoing performances.</li>
+        <li>🚫 Don’t Damage the property at the Venue.</li>
+        <li>🚫 Parents do make sure your children don’t loiter around during photoshoot.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Important Note -->
+  <div class="mt-10 p-4 bg-yellow-50 rounded-xl border-l-4 border-yellow-500 shadow-sm text-sm">
+    <p class="flex items-center gap-2 text-yellow-800 font-medium">
+      <span class="material-icons text-yellow-700">warning</span>
+      Children must be supervised at all times specially during sports & performances.
+    </p>
+  </div>
+
+</section>
+
+<style>
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fadeIn { animation: fadeIn 0.6s ease; }
+</style>
+
+{% endblock %}

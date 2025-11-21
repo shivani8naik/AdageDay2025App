@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="max-w-lg mx-auto px-4 py-8 animate-fadeIn">
+
+  <!-- Page Header -->
+  <div class="text-center mb-6">
+    <h1 class="text-2xl font-bold text-[#008B94]">Announcements</h1>
+    <p class="text-xs text-gray-500">Live event alerts • Reminders • Important updates</p>
+  </div>
+
+  <!-- Scrolling News Banner -->
+  <div class="bg-[#008B94] text-white text-xs py-2 px-3 rounded-lg shadow mb-6 overflow-hidden">
+    <marquee behavior="scroll" direction="left">
+      {% for ann in announcements %}
+        🔔 <strong>{{ ann.title }}</strong> - {{ ann.text }} &nbsp;&nbsp;&nbsp;
+      {% endfor %}
+    </marquee>
+  </div>
+
+  <!-- Announcement Cards -->
+  <div class="space-y-4">
+    {% for ann in announcements %}
+    <div class="bg-white rounded-xl shadow-sm hover:shadow-lg transition p-4 border border-gray-100">
+
+      <!-- Header -->
+      <div class="flex items-center justify-between">
+        <span class="px-2 py-1 rounded-full text-[10px] font-medium
+          {% if ann.tag == 'Important' %} bg-red-100 text-red-600
+          {% elif ann.tag == 'Reminder' %} bg-yellow-100 text-yellow-600
+          {% else %} bg-teal-100 text-[#008B94] {% endif %}">
+          {{ ann.tag }}
+        </span>
+        <span class="text-[10px] text-gray-400">🕒 {{ ann.time }}</span>
+
+      </div>
+
+      <!-- Title & Text -->
+      <h3 class="font-semibold text-sm mt-2 text-gray-800">{{ ann.title }}</h3>
+      <p class="text-xs text-gray-600 mt-1 leading-relaxed">{{ ann.text }}</p>
+
+    </div>
+    {% endfor %}
+  </div>
+
+</section>
+
+<!-- Soft Animation -->
+<style>
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fadeIn {
+  animation: fadeIn 0.6s ease-in-out;
+}
+</style>
+
+{% endblock %}
